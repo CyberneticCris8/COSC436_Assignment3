@@ -4,7 +4,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['userPassword']; 
     $displayName = $_POST['displayName']; 
-    
 }
 ?> 
 <!DOCTYPE html>
@@ -18,18 +17,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 <script>
     document.addEventListener("DOMContentLoaded", () => {
+        // Get help overlay, open/close buttons
         const helpDisplay = document.getElementById("help-overlay");
-        const signupDisplay = document.getElementById("signup-overlay");
-        const loginDisplay = document.getElementById("login-overlay");
-
         const helpBtn = document.getElementById("helpBtn");
-        const signupBtn = document.getElementById("signupBtn");
-        const loginBtn = document.getElementById("loginBtn");
-
         const closeHelpBtn = document.getElementById("help-closeBtn");
-        const closeSignupBtn = document.getElementById("signup-closeBtn");
-        const closeLogin = document.getElementById("login-closeBtn")
 
+        // Get sign overlay, open/close buttons
+        const signupDisplay = document.getElementById("signup-overlay");
+        const signupBtn = document.getElementById("signupBtn");
+        const closeSignupBtn = document.getElementById("signup-closeBtn");
+        const signup = document.getElementById("signup");
+
+        // Get login overlay, open/close buttons
+        const loginDisplay = document.getElementById("login-overlay");
+        const loginBtn = document.getElementById("loginBtn");
+        const closeLogin = document.getElementById("login-closeBtn")
+        const login = document.getElementById("login");
+
+        // Functions to display/hide overlays
         function showOverlay(overlayId) {
         overlayId.style.display = 'flex';
         }
@@ -57,6 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         closeLogin.addEventListener('click', () => {
             hideOverlay(loginDisplay);
         });
+
     });
 </script>
 <table>
@@ -87,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="password" id="userPassword" name="userPassword"><br>
                 <label for="displayName">Display Name:</label><br>
                 <input type="text" id="displayName" name="displayName"><br>
-                <input type="submit" value="Submit">
+                <input type="submit" id="signup" value="Submit">
         </form>
     </div>
 </div>
@@ -99,7 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="text" id="username" name="username"><br>
             <label for="userPassword">Password:</label><br>
             <input type="password" id="userPassword" name="userPassword"><br>
-            <input type="submit" value="Submit">
+            <input type="submit" id="login" value="Submit">
         </form>
     </div>
 </div>

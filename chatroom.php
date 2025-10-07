@@ -14,12 +14,17 @@
     document.addEventListener("DOMContentLoaded", () => {
         const helpDisplay = document.getElementById("help-overlay");
         const logoutDisplay = document.getElementById("logout-overlay");
+        const chatDisplay = document.getElementById("chat-overlay");
 
         const helpBtn = document.getElementById("helpBtn");
         const closeHelpBtn = document.getElementById("help-closeBtn");
 
         const logoutBtn = document.getElementById("logoutBtn")
         const closeLogout = document.getElementById("logout-closeBtn");
+
+        const chatBtn = document.getElementById("add-rooms");
+        const closeChat = document.getElementById("chat-closeBtn")
+
 
         function showOverlay(overlayId) {
         overlayId.style.display = 'flex';
@@ -41,7 +46,13 @@
         closeLogout.addEventListener('click', () => {
             hideOverlay(logoutDisplay);
         });
-
+        
+        chatBtn.addEventListener('click', () => {
+            showOverlay(chatDisplay);
+        });
+        closeChat.addEventListener('click', () => {
+            hideOverlay(chatDisplay);
+        });
     });
 </script>
 <table>
@@ -70,40 +81,54 @@
 </div>
 <div class="blank-cell">
 </div>
-<div class="rooms-header">
-    <h1>Available Rooms</h1>
-</div>
-<div id="available-rooms" class="available-rooms">
+<div class="chatrooms-container">
     <table class="chatroom-tb">
-        <thead class ="chatroom-thead">
+        <thead class="chatroom-thead">
             <tr>
-                <th id="room-name" class="room-name">Room Name</th>
-                <th id="room-status" class="room-status">Status</th>
-                <th id="join-room" class="join-room">Join</th>
+                <th class="section-hds">
+                    <h1 class="available-rooms">Available Rooms</h1>
+                    <button id="add-rooms" class="add-rooms">+</button>
+                    <div id="chat-overlay" id="chat-overlay">
+                        <div id="overlay-chat" class="overlay-chat">
+                            <form action="" method="POST">
+                                <button id="chat-closeBtn" class="chat-closeBtn">&times;</button>
+                                <label for="chatName">Chatroom Name:</label><br>
+                                <input type="text" id="chatName" name="chatName"><br>
+                                <label for="chatKey">Chatroom Key:</label><br>
+                                <input type="text" id="chatKey" name="chatKey"><br>
+                            </form>
+                        </div>
+                    </div>
+                </th>
+            </tr>
+        </thead>
+            <tr class="room-headers">
+                <th>
+                    <p class="room-name">Room Name</p>
+                </th>
+                <th>
+                    <p class="room-status">Status</p>
+                </th>
+                <th>
+                    <p class="join-room">Join?</p>
+                </th>
             </tr>
             <tbody>
+
             </tbody>
-        </thead>
     </table>
-</div>
-<div>
-    <h1 id="current-room">Current Room</h1>
-</div>
-<div id="chatroom" class="chatroom">
-    <table class="chatroom-tb">
-        <thead class ="chatroom-thead">
+    <table class="chatroom">
+        <thead class="chatroom-thead">
+            <tr>
+                <th id="current-room" class="current-room">Room Name</th>
+            </tr>
+        </thead>
+        <tbody>
             <tr>
             </tr>
-            <tbody>
-            </tbody>
-        </thead>
+        </tbody>
     </table>
-<div class="blank-chat-cell"></div>
-    <label for="msg"></label>
-    <input type="text" id="msg" name="msg">
-    <button id="send-msg" class="send-msg">Send Message</button>
 </div>
-<div>
 <button onclick="window.location.href='index.php'">Go back to index</button>
 </body>
 </html> 
