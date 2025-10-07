@@ -1,5 +1,10 @@
 <?php 
+// Get chatroom name, chatroom key 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $chatroomName = $_POST["chatName"];
+    $chatKey = $_POST["chatKey"];
 
+}
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,27 +17,18 @@
 <body>
 <script>
     document.addEventListener("DOMContentLoaded", () => {
-        const helpDisplay = document.getElementById("help-overlay");
-        const logoutDisplay = document.getElementById("logout-overlay");
-        const chatDisplay = document.getElementById("chat-overlay");
-
-        const helpBtn = document.getElementById("helpBtn");
-        const closeHelpBtn = document.getElementById("help-closeBtn");
-
-        const logoutBtn = document.getElementById("logoutBtn")
-        const closeLogout = document.getElementById("logout-closeBtn");
-
-        const chatBtn = document.getElementById("add-rooms");
-        const closeChat = document.getElementById("chat-closeBtn")
-
-
+        // Functions for displaying/hiding overlays
         function showOverlay(overlayId) {
-        overlayId.style.display = 'flex';
+            overlayId.style.display = 'flex';
         }
         function hideOverlay(overlayId) {
-        overlayId.style.display = 'none';
+            overlayId.style.display = 'none';
         }
-
+        
+        // Get help overlay, open/close buttons
+        const helpDisplay = document.getElementById("help-overlay");
+        const helpBtn = document.getElementById("helpBtn");
+        const closeHelpBtn = document.getElementById("help-closeBtn");
         helpBtn.addEventListener('click', () => {
             showOverlay(helpDisplay);
         });
@@ -40,13 +36,21 @@
             hideOverlay(helpDisplay);
         });
 
+        // Get logout overlay, open/close buttons
+        const logoutDisplay = document.getElementById("logout-overlay");
+        const logoutBtn = document.getElementById("logoutBtn")
+        const closeLogout = document.getElementById("logout-closeBtn");
         logoutBtn.addEventListener('click', () => {
             showOverlay(logoutDisplay);
         });
         closeLogout.addEventListener('click', () => {
             hideOverlay(logoutDisplay);
         });
-        
+
+        // Get chat overlay, open/close buttons
+        const chatDisplay = document.getElementById("chat-overlay");
+        const chatBtn = document.getElementById("add-rooms");
+        const closeChat = document.getElementById("chat-closeBtn");      
         chatBtn.addEventListener('click', () => {
             showOverlay(chatDisplay);
         });
@@ -57,12 +61,12 @@
 </script>
 <table>
     <tr>
-        <th>Chat Room via PHP Web Sockets</th>
+        <th class="page-header">Chat Room via PHP Web Sockets</th>
 </tr>
     <tr>
         <td>By: Cristopher Castro</td>
-        <td><button id="helpBtn">Help</button></td>
-        <td><button id="logoutBtn">Logout</button></td>
+        <td><button id="helpBtn" class="helpBtn">Help</button></td>
+        <td><button id="logoutBtn" class="logoutBtn">Logout</button></td>
     </tr>
 </table>
 <div id="help-overlay" class="help-overlay">
@@ -76,46 +80,38 @@
     <div id ="overlay-logout" class="overlay-logout">
         <button id="logout-closeBtn" class="logout-closeBtn">&times;</button>
         <h1>Are You Sure You Want To Logout?</h1>
-        <button id=logout class="logout">Yes</button>
+        <button id=logout class="logout" onclick="window.location.href='index.php'">Yes</button>
     </div>
 </div>
 <div class="blank-cell">
+</div>
+<div id="chat-overlay" class="chat-overlay">
+    <div id="overlay-chat" class="overlay-chat">
+        <form action="" method="POST">
+            <button id="chat-closeBtn" class="chat-closeBtn">&times;</button>
+                <label for="chatName">Chatroom Name:</label><br>
+                <input type="text" id="chatName" name="chatName" required><br>
+                <label for="chatKey">Chatroom Key:</label><br>
+                <input type="text" id="chatKey" name="chatKey" required><br>
+        </form>
+    </div>
 </div>
 <div class="chatrooms-container">
     <table class="chatroom-tb">
         <thead class="chatroom-thead">
             <tr>
-                <th class="section-hds">
+                <th colspan="3">
                     <h1 class="available-rooms">Available Rooms</h1>
                     <button id="add-rooms" class="add-rooms">+</button>
-                    <div id="chat-overlay" id="chat-overlay">
-                        <div id="overlay-chat" class="overlay-chat">
-                            <form action="" method="POST">
-                                <button id="chat-closeBtn" class="chat-closeBtn">&times;</button>
-                                <label for="chatName">Chatroom Name:</label><br>
-                                <input type="text" id="chatName" name="chatName"><br>
-                                <label for="chatKey">Chatroom Key:</label><br>
-                                <input type="text" id="chatKey" name="chatKey"><br>
-                            </form>
-                        </div>
-                    </div>
                 </th>
             </tr>
         </thead>
             <tr class="room-headers">
-                <th>
-                    <p class="room-name">Room Name</p>
-                </th>
-                <th>
-                    <p class="room-status">Status</p>
-                </th>
-                <th>
-                    <p class="join-room">Join?</p>
-                </th>
+                <th>Room Name</th>
+                <th>Status</th>
+                <th>Join?</th>
             </tr>
-            <tbody>
-
-            </tbody>
+            <tbody></tbody>
     </table>
     <table class="chatroom">
         <thead class="chatroom-thead">
@@ -129,6 +125,6 @@
         </tbody>
     </table>
 </div>
-<button onclick="window.location.href='index.php'">Go back to index</button>
+<button onclick="window.location.href='index.php'">Go back to index.php</button>
 </body>
 </html> 

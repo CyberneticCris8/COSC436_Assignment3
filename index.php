@@ -1,5 +1,6 @@
 <?php 
-//  php -S 0.0.0.0:8080
+//  php -S 0.0.0.0:8080 
+// Get username, password, & display name 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['userPassword']; 
@@ -17,38 +18,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 <script>
     document.addEventListener("DOMContentLoaded", () => {
+        // Functions for displaying/hiding overlays
+        function showOverlay(overlayId) {
+            overlayId.style.display = 'flex';
+        }
+        function hideOverlay(overlayId) {
+            overlayId.style.display = 'none';
+        }
+
         // Get help overlay, open/close buttons
         const helpDisplay = document.getElementById("help-overlay");
         const helpBtn = document.getElementById("helpBtn");
         const closeHelpBtn = document.getElementById("help-closeBtn");
+        helpBtn.addEventListener('click', () => {
+        showOverlay(helpDisplay);
+        });
+        closeHelpBtn.addEventListener('click', () => {
+        hideOverlay(helpDisplay);
+        });
 
         // Get sign overlay, open/close buttons
         const signupDisplay = document.getElementById("signup-overlay");
         const signupBtn = document.getElementById("signupBtn");
         const closeSignupBtn = document.getElementById("signup-closeBtn");
         const signup = document.getElementById("signup");
-
-        // Get login overlay, open/close buttons
-        const loginDisplay = document.getElementById("login-overlay");
-        const loginBtn = document.getElementById("loginBtn");
-        const closeLogin = document.getElementById("login-closeBtn")
-        const login = document.getElementById("login");
-
-        // Functions to display/hide overlays
-        function showOverlay(overlayId) {
-        overlayId.style.display = 'flex';
-        }
-        function hideOverlay(overlayId) {
-        overlayId.style.display = 'none';
-        }
-
-        helpBtn.addEventListener('click', () => {
-            showOverlay(helpDisplay);
-        });
-        closeHelpBtn.addEventListener('click', () => {
-            hideOverlay(helpDisplay);
-        });
-
         signupBtn.addEventListener('click', () => {
             showOverlay(signupDisplay);
         });
@@ -56,13 +49,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             hideOverlay(signupDisplay);
         });
 
+        // Get login overlay, open/close buttons
+        const loginDisplay = document.getElementById("login-overlay");
+        const loginBtn = document.getElementById("loginBtn");
+        const closeLogin = document.getElementById("login-closeBtn")
+        const login = document.getElementById("login");
         loginBtn.addEventListener('click', () => {
             showOverlay(loginDisplay);
         });
         closeLogin.addEventListener('click', () => {
             hideOverlay(loginDisplay);
         });
-
     });
 </script>
 <table>
@@ -71,9 +68,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </tr>
     <tr>
         <td>By: Cristopher Castro</td>
-        <td><button id="helpBtn">Help</button></td>
-        <td><button id="signupBtn">Signup</button></td>
-        <td><button id="loginBtn">Login</button></td>
+        <td><button id="helpBtn" class="helpBtn">Help</button></td>
+        <td><button id="signupBtn" class="signupBtn">Signup</button></td>
+        <td><button id="loginBtn" class="loginBtn">Login</button></td>
     </tr>
 </table>
 <div id="help-overlay" class="help-overlay">
@@ -88,11 +85,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <form action="" method="POST">
             <button id="signup-closeBtn" class="signup-closeBtn">&times;</button>
                 <label for="username">Username:</label><br>
-                <input type="text" id="username" name="username"><br>
+                <input type="text" id="username" name="username" required><br>
                 <label for="userPassword">Password:</label><br>
-                <input type="password" id="userPassword" name="userPassword"><br>
+                <input type="password" id="userPassword" name="userPassword" required><br>
                 <label for="displayName">Display Name:</label><br>
-                <input type="text" id="displayName" name="displayName"><br>
+                <input type="text" id="displayName" name="displayName" required><br>
                 <input type="submit" id="signup" value="Submit">
         </form>
     </div>
@@ -102,13 +99,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <form action="" method="POST">
             <button id="login-closeBtn" class="login-closeBtn">&times;</button>
             <label for="username">Username:</label><br>
-            <input type="text" id="username" name="username"><br>
+            <input type="text" id="username" name="username" required><br>
             <label for="userPassword">Password:</label><br>
-            <input type="password" id="userPassword" name="userPassword"><br>
+            <input type="password" id="userPassword" name="userPassword" required><br>
             <input type="submit" id="login" value="Submit">
         </form>
     </div>
 </div>
-<button onclick="window.location.href='chatroom.php'">Go to chatroom</button>
+<button onclick="window.location.href='chatroom.php'">Go to chatroom.php</button>
 </body>
 </html>
