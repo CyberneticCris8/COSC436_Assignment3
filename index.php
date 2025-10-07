@@ -4,6 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['userPassword']; 
     $displayName = $_POST['displayName']; 
+    
 }
 ?> 
 <!DOCTYPE html>
@@ -102,5 +103,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </form>
     </div>
 </div>
+<button onclick="window.location.href='chatroom.php'">Go to chatroom</button>
 </body>
 </html>

@@ -3,7 +3,7 @@ table, th, td {
     width: 100%;
     text-align: center;
 }
-.help-overlay, .signup-overlay, .login-overlay {
+.help-overlay, .signup-overlay, .login-overlay, .logout-overlay {
     display: none;
     position: fixed;
     top: 0;
@@ -15,7 +15,7 @@ table, th, td {
     justify-content: center;
     align-items: center;
 }
-.overlay-help, .overlay-signup, .overlay-login {
+.overlay-help, .overlay-signup, .overlay-login, .overlay-logout {
     background-color: white;
     padding: 30px;
     border-radius: 10px;
@@ -24,7 +24,7 @@ table, th, td {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
-.help-closeBtn, .signup-closeBtn, .login-closeBtn {
+.help-closeBtn, .signup-closeBtn, .login-closeBtn, .logout-closeBtn {
     position: absolute;
     top: 10px;
     right: 15px;
@@ -35,4 +35,51 @@ table, th, td {
     border: none;
     background: none;
 }
-
+.blank-cell {
+    border:1px solid black;
+    width: 100%;
+    text-align: center;
+    height: 45px;
+}
+.rooms-header {
+    border:1px solid black;
+    width: 36%;
+    text-align: center;
+    height: 80px;
+}
+.available-rooms {
+    height: 500px; 
+    overflow-y: auto; 
+    border: 1px solid #ccc;
+    margin-right: 800px;
+}
+.chatroom-tb {
+    width: 100%;
+    border-collapse: collapse;
+}
+.chatroom-thead {
+    background-color: #f5f5f5;
+    position: sticky;
+    top: 0;
+}
+.room-name {
+    width: 30%;
+}
+.room-status {
+    width: 40%;
+}
+.join-room {
+    width: 50%;
+}
+.current-room {
+    border:1px solid black;
+    width: 36%;
+    text-align: center;
+    height: 80px;
+}
+.chatroom {
+    height: 500px; 
+    overflow-y: auto; 
+    border: 1px solid #ccc;
+    margin-left: 800px;
+}
