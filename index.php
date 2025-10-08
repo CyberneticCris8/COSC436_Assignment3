@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         closeLogin.addEventListener('click', () => {
             hideOverlay(loginDisplay);
         });
-    });
+});
 </script>
 <table>
     <tr>
