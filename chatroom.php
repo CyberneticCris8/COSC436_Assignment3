@@ -1,8 +1,9 @@
 <?php 
-// Get chatroom name, chatroom key 
+// Get chatroom name, chatroom key, and user message
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $chatroomName = $_POST["chatName"];
     $chatKey = $_POST["chatKey"];
+    $userMsg = $_POST["user-msg"];
 
 }
 ?> 
@@ -64,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <th class="page-header">Chat Room via PHP Web Sockets</th>
 </tr>
     <tr>
-        <td>By: Cristopher Castro</td>
+        <td>By: Cristopher Castro, Alexsander Boyd, & Andrew Bodnar</td>
         <td><button id="helpBtn" class="helpBtn">Help</button></td>
         <td><button id="logoutBtn" class="logoutBtn">Logout</button></td>
     </tr>
@@ -93,6 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="text" id="chatName" name="chatName" required><br>
                 <label for="chatKey">Chatroom Key:</label><br>
                 <input type="text" id="chatKey" name="chatKey" required><br>
+                <input type="submit" id="signup" value="Submit">
         </form>
     </div>
 </div>
@@ -121,9 +123,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </thead>
         <tbody>
             <tr>
+                </tr>
             </tr>
         </tbody>
     </table>
+</div>
+<div class="user-msgBox">
+    <form action="" method="POST">
+    <input type="text" id="user-msg" class="user-msg" name="user-msg" placeholder="Type New Message Here" required>
+    <input type="submit" id="send-msg" class="send-msg" value="Send Message">
+</form>
 </div>
 <button onclick="window.location.href='index.php'">Go back to index.php</button>
 </body>

@@ -5,6 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['userPassword']; 
     $displayName = $_POST['displayName']; 
+    
 }
 ?> 
 <!DOCTYPE html>
@@ -67,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <th>Chat Room via PHP Web Sockets</th>
 </tr>
     <tr>
-        <td>By: Cristopher Castro</td>
+        <td>By: Cristopher Castro, Alexsander Boyd, & Andrew Bodnar</td>
         <td><button id="helpBtn" class="helpBtn">Help</button></td>
         <td><button id="signupBtn" class="signupBtn">Signup</button></td>
         <td><button id="loginBtn" class="loginBtn">Login</button></td>
